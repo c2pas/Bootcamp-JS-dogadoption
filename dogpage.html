@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img {
+                width: 200px;
+                height: auto;
+            }
+            ul.box {
+                text-align: center;
+                border: 1px solid;
+                width: 290px;
+                padding: 10px;
+                margin: 40px auto;
+            }
+            li {
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dogscontainer"></div>
+    </body>
+    <script>
+        function countDogAge(age) {
+            return age * 7
+        }
+        const dogs = [{
+            name: "Akkie",
+            picture: "akkie.jpeg",
+            age: countDogAge(7),
+            favorite_toys: ["Ball", "Bone"]
+        }, {
+            name: "Sansa",
+            picture: "sansa.jpeg",
+            age: countDogAge(6),
+            favorite_toys:["Shoes", "Slippers"],
+        }, {
+            name: "Maxxie",
+            picture: "maxxie.jpg",
+            age: countDogAge(1),
+            favorite_toys:["Dried Frogs", "Plastic"],
+        }
+    ];
+
+        document.getElementById("dogscontainer").innerHTML = dogs.map(function(dog) {
+            return `
+            <ul class="box">
+                <li>Name: ${dog.name}</li>
+                <li>Age: Your doggie is ${dog.age} years old in dog years!</li>
+                <li><img src="${dog.picture}"></li>
+                <li>fave toys: ${dog.favorite_toys.map(function(toy) {
+                    return " " + toy;
+                })}</li>
+            </ul>
+            `
+        }).join("");
+    </script>
+</html>
